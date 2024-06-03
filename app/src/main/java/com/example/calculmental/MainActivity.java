@@ -24,5 +24,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ActivityGame.class);
             startActivity(intent);
         });
+        boutonRecords = findViewById(R.id.btn_highscore);
+        boutonRecords.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ActivityHighscores.class);
+            startActivity(intent);
+        });
     }
 }
