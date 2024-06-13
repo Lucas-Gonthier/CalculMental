@@ -21,6 +21,8 @@ public class ActivityGame extends AppCompatActivity {
     private Button boutonReponseQuatre;
     private TextView txtCalcul;
     private TextView txtQuestion;
+    private int score = 0;
+    private int questionNumber = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,40 +33,75 @@ public class ActivityGame extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        setup();
+    }
+
+    private void setup() {
         txtQuestion = findViewById(R.id.txt_question);
-        txtQuestion.setText("Question n°");
+        txtQuestion.setText("Question n°" + questionNumber);
+
         txtCalcul = findViewById(R.id.txt_calcul);
         txtCalcul.setText(generateRandomCalculation());
+        String calculation = txtCalcul.getText().toString();
+        double answer = performCalculation(calculation);
         boutonReponseUn = findViewById(R.id.btn_reponse1);
-        boutonReponseUn.setText("Réponse 1");
         boutonReponseDeux = findViewById(R.id.btn_reponse2);
-        boutonReponseDeux.setText("Réponse 2");
         boutonReponseTrois = findViewById(R.id.btn_reponse3);
-        boutonReponseTrois.setText("Réponse 3");
         boutonReponseQuatre = findViewById(R.id.btn_reponse4);
-        boutonReponseQuatre.setText("Réponse 4");
 
-        boutonReponseUn.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseUn));
-        boutonReponseDeux.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseDeux));
-        boutonReponseTrois.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseTrois));
-        boutonReponseQuatre.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseQuatre));
+        Random random = new Random();
+        int goodAnswer = random.nextInt(4) + 1;
+        switch (goodAnswer){
+            case 1:
+                boutonReponseUn.setText(String.valueOf(answer));
+                boutonReponseDeux.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseTrois.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseQuatre.setText(String.valueOf(wrongAnswer(calculation)));
 
+                break;
+            case 2:
+                boutonReponseUn.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseDeux.setText(String.valueOf(answer));
+                boutonReponseTrois.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseQuatre.setText(String.valueOf(wrongAnswer(calculation)));
+                break;
+            case 3:
+                boutonReponseUn.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseDeux.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseTrois.setText(String.valueOf(answer));
+                boutonReponseQuatre.setText(String.valueOf(wrongAnswer(calculation)));
+                break;
+            case 4:
+                boutonReponseUn.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseDeux.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseTrois.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseQuatre.setText(String.valueOf(answer));
+                break;
+            default:
+                break;
+        }
+
+        boutonReponseUn.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseUn, answer));
+        boutonReponseDeux.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseDeux, answer));
+        boutonReponseTrois.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseTrois, answer));
+        boutonReponseQuatre.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseQuatre, answer));
     }
-
-    private void appuyerBoutonReponse(Button bouton) {
-        if (isCorrectAnswer(bouton.getText().toString())) {
+    private void appuyerBoutonReponse(Button bouton, double answer) {
+        if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(answer))) {
             txtQuestion.setText("Bonne réponse !");
-            txtCalcul.setText(generateRandomCalculation());
+            score++;
+            questionNumber++;
+            setup();
         } else {
             txtQuestion.setText("Mauvaise réponse !");
+            questionNumber++;
+            setup();
         }
     }
 
-    private boolean isCorrectAnswer(String string) {
-        if(string.equals("Réponse 1")) {
-            return true;
-        }
-        return false;
+    private boolean isCorrectAnswer(String string, String answer) {
+        return string.equals(answer);
     }
 
     public static String generateRandomCalculation() {
@@ -100,5 +137,16 @@ public class ActivityGame extends AppCompatActivity {
                 break;
         }
         return 0;
+    }
+
+    public static double wrongAnswer(String calculation) {
+        Random random = new Random();
+        double answer = performCalculation(calculation);
+        int min = (int) answer - 20;
+        int max = (int) answer + 20;
+        double fakeAnswer = random.nextInt((max - min) + 1) + min;
+        while (answer == fakeAnswer)
+            fakeAnswer = random.nextInt((max - min) + 1) + min;
+        return fakeAnswer;
     }
 }
