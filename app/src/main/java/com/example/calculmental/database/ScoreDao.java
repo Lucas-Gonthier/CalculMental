@@ -32,12 +32,10 @@ public class ScoreDao extends BaseDao<Score>{
     @Override
     protected Score getEntity(Cursor cursor) {
         Score score = new Score();
-
         Integer indexUserName = cursor.getColumnIndex(userName);
         Integer indexScore = cursor.getColumnIndex(ScoreDao.score);
         score.setUserName(cursor.getString(indexUserName));
         score.setScore(cursor.getInt(indexScore));
-
         return score;
     }
 

@@ -4,9 +4,6 @@ public class Score extends BaseEntity{
     String userName;
     Integer score;
 
-    public Score() {
-    }
-
     public String getUserName() {
         return userName;
     }

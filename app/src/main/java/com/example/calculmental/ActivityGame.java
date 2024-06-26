@@ -16,12 +16,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.Locale;
 
-
+import com.example.calculmental.entities.Score;
+import com.example.calculmental.database.ScoreBaseHelper;
+import com.example.calculmental.database.ScoreDao;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ActivityGame extends AppCompatActivity {
     private static final String[] OPERATORS = {"+", "-", "*", "/"};
-    private Button boutonAccueil;
     private Button boutonReponseUn;
     private Button boutonReponseDeux;
     private Button boutonReponseTrois;
@@ -54,6 +55,14 @@ public class ActivityGame extends AppCompatActivity {
         boutonSaveName.setVisibility(View.GONE);
         boutonHome.setVisibility(View.GONE);
         txtInputName.setVisibility(View.GONE);
+
+        boutonSaveName.setOnClickListener(view -> {
+            Score score = new Score();
+            score.setUserName(txtInputName.getText().toString());
+            score.setScore(this.score);
+            ScoreDao scoreDao = new ScoreDao(new ScoreBaseHelper(this, "score.db", 1));
+            scoreDao.create(score);
+        });
 
         boutonHome.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
