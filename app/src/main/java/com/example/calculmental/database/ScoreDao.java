@@ -1,9 +1,9 @@
-package com.example.calculmental.db.database;
+package com.example.calculmental.database;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.example.calculmental.db.entities.Score;
+import com.example.calculmental.entities.Score;
 
 import java.util.List;
 

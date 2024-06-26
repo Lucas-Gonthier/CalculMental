@@ -1,4 +1,4 @@
-package com.example.calculmental.db.entities;
+package com.example.calculmental.entities;
 
 public class BaseEntity {
     public long id;

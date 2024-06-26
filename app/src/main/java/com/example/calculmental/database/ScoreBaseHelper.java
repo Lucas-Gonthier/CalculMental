@@ -1,4 +1,4 @@
-package com.example.calculmental.db.database;
+package com.example.calculmental.database;
 
 import android.content.Context;
 

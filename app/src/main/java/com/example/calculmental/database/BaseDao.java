@@ -1,10 +1,10 @@
-package com.example.calculmental.db.database;
+package com.example.calculmental.database;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.calculmental.db.entities.BaseEntity;
+import com.example.calculmental.entities.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
