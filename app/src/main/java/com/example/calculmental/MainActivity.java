@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button boutonJouer;
     private Button boutonRecords;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

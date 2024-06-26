@@ -1,5 +1,6 @@
 package com.example.calculmental;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,7 @@ public class ActivityGame extends AppCompatActivity {
     private Button boutonReponseQuatre;
     private TextView txtCalcul;
     private TextView txtQuestion;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,7 @@ public class ActivityGame extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void appuyerBoutonReponse(Button bouton) {
         if (isCorrectAnswer(bouton.getText().toString())) {
             txtQuestion.setText("Bonne réponse !");
@@ -61,10 +64,7 @@ public class ActivityGame extends AppCompatActivity {
     }
 
     private boolean isCorrectAnswer(String string) {
-        if(string.equals("Réponse 1")) {
-            return true;
-        }
-        return false;
+        return string.equals("Réponse 1");
     }
 
     public static String generateRandomCalculation() {

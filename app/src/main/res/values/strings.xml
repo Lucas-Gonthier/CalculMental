@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CalculMental</string>
+
+
+    <string name="text_score">Enregistrer votre score</string>
+    <string name="username_input">Entrer un nom d\'utilisateur</string>
+    <string name="username_error">Entrez un nom d\'utilisateur valide</string>
+    <string name="btn_save_score">Sauvegarder votre score</string>
 </resources>
