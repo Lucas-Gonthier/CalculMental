@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityGame">
+    tools:context=".ActivityGame"
+    android:background="#3AAAFE">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,14 +37,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textSize="44sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txt_calcul"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
@@ -60,7 +65,7 @@
                         android:id="@+id/txtinput_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="votre nom" />
+                        android:hint="@string/username_error" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
@@ -71,16 +76,20 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btn_saveName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Button" />
-
-                    <Button
                         android:id="@+id/btn_home"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Button" />
+                        android:backgroundTint="#81EF36"
+                        android:text="@string/accueil"
+                        android:textColor="@android:color/black" />
+
+                    <Button
+                        android:id="@+id/btn_nameSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#81EF36"
+                        android:text="@string/text_score"
+                        android:textColor="@android:color/black" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -97,44 +106,70 @@
 
             <LinearLayout
                 android:id="@+id/premiereligne"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_reponse1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:layout_width="192dp"
+                    android:layout_height="120dp"
+                    android:backgroundTint="#81EF36"
+                    android:text="Button"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    app:cornerRadius="16dp" />
+
+                <Space
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent" />
 
                 <Button
                     android:id="@+id/btn_reponse2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:layout_width="192dp"
+                    android:layout_height="120dp"
+                    android:backgroundTint="#81EF36"
+                    android:text="Button"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    app:cornerRadius="16dp"/>
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
 
             <LinearLayout
                 android:id="@+id/deuxiemeligne"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_reponse3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:layout_width="192dp"
+                    android:layout_height="120dp"
+                    android:backgroundTint="#81EF36"
+                    android:text="Button"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    app:cornerRadius="16dp"/>
+
+                <Space
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent" />
 
                 <Button
                     android:id="@+id/btn_reponse4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:layout_width="192dp"
+                    android:layout_height="120dp"
+                    android:backgroundTint="#81EF36"
+                    android:text="Button"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    app:cornerRadius="16dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

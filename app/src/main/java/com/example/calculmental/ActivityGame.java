@@ -1,5 +1,6 @@
 package com.example.calculmental;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,12 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import java.util.Locale;
 
-import com.example.calculmental.entities.Score;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ActivityGame extends AppCompatActivity {
     private static final String[] OPERATORS = {"+", "-", "*", "/"};
+    private Button boutonAccueil;
     private Button boutonReponseUn;
     private Button boutonReponseDeux;
     private Button boutonReponseTrois;
@@ -38,12 +41,13 @@ public class ActivityGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_game);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        boutonSaveName = findViewById(R.id.btn_saveName);
+        boutonSaveName = findViewById(R.id.btn_nameSave);
         boutonHome = findViewById(R.id.btn_home);
         txtInputName = findViewById(R.id.txtinput_name);
 
@@ -51,8 +55,10 @@ public class ActivityGame extends AppCompatActivity {
         boutonHome.setVisibility(View.GONE);
         txtInputName.setVisibility(View.GONE);
 
-        boutonSaveName.setText("Enregistrer");
-        boutonHome.setText("Accueil");
+        boutonHome.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
 
         setup();
     }
@@ -72,35 +78,35 @@ public class ActivityGame extends AppCompatActivity {
 
         Random random = new Random();
         int goodAnswer = random.nextInt(4) + 1;
-        switch (goodAnswer){
+        switch (goodAnswer) {
             case 1:
-                boutonReponseUn.setText(String.valueOf(answer));
-                boutonReponseDeux.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseTrois.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseQuatre.setText(String.valueOf(wrongAnswer(calculation)));
-
+                boutonReponseUn.setText(String.format(Locale.getDefault(), "%.2f", answer));
+                boutonReponseDeux.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseTrois.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseQuatre.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
                 break;
             case 2:
-                boutonReponseUn.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseDeux.setText(String.valueOf(answer));
-                boutonReponseTrois.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseQuatre.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseUn.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseDeux.setText(String.format(Locale.getDefault(), "%.2f", answer));
+                boutonReponseTrois.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseQuatre.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
                 break;
             case 3:
-                boutonReponseUn.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseDeux.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseTrois.setText(String.valueOf(answer));
-                boutonReponseQuatre.setText(String.valueOf(wrongAnswer(calculation)));
+                boutonReponseUn.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseDeux.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseTrois.setText(String.format(Locale.getDefault(), "%.2f", answer));
+                boutonReponseQuatre.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
                 break;
             case 4:
-                boutonReponseUn.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseDeux.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseTrois.setText(String.valueOf(wrongAnswer(calculation)));
-                boutonReponseQuatre.setText(String.valueOf(answer));
+                boutonReponseUn.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseDeux.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseTrois.setText(String.format(Locale.getDefault(), "%.2f", wrongAnswer(calculation)));
+                boutonReponseQuatre.setText(String.format(Locale.getDefault(), "%.2f", answer));
                 break;
             default:
                 break;
         }
+
 
         boutonReponseUn.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseUn, answer));
         boutonReponseDeux.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseDeux, answer));
@@ -110,7 +116,7 @@ public class ActivityGame extends AppCompatActivity {
 
     }
     private void appuyerBoutonReponse(Button bouton, double answer) {
-        if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(answer))) {
+        if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(String.format(Locale.getDefault(), "%.2f",answer)))) {
             txtQuestion.setText("Bonne réponse !");
             score++;
             questionNumber++;

@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">CalculMental</string>
+    <string name="titre">Alien Calculation: Isolation</string>
+    <string name="bouton_jouer">Jouer !</string>
+    <string name="bouton_score">High Score</string>
+    <string name="logo_desc">Image du logo(un alien dans son vaisseau</string>
 
-
+    <string name="accueil">Accueil</string>
     <string name="text_score">Enregistrer votre score</string>
     <string name="username_input">Entrer un nom d\'utilisateur</string>
     <string name="username_error">Entrez un nom d\'utilisateur valide</string>
