@@ -14,6 +14,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.calculmental.db.entities.Score;
+import com.google.android.material.textfield.TextInputEditText;
+
 public class ActivityGame extends AppCompatActivity {
     private static final String[] OPERATORS = {"+", "-", "*", "/"};
     private Button boutonReponseUn;
@@ -22,6 +25,9 @@ public class ActivityGame extends AppCompatActivity {
     private Button boutonReponseQuatre;
     private TextView txtCalcul;
     private TextView txtQuestion;
+    private Button boutonSaveName;
+    private Button boutonHome;
+    private TextInputEditText txtInputName;
     private int score = 0;
     private int life = 3;
     private int questionNumber = 1;
@@ -37,6 +43,16 @@ public class ActivityGame extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        boutonSaveName = findViewById(R.id.btn_saveName);
+        boutonHome = findViewById(R.id.btn_home);
+        txtInputName = findViewById(R.id.txtinput_name);
+
+        boutonSaveName.setVisibility(View.GONE);
+        boutonHome.setVisibility(View.GONE);
+        txtInputName.setVisibility(View.GONE);
+
+        boutonSaveName.setText("Enregistrer");
+        boutonHome.setText("Accueil");
 
         setup();
     }
@@ -110,6 +126,9 @@ public class ActivityGame extends AppCompatActivity {
                 boutonReponseDeux.setVisibility(View.GONE);
                 boutonReponseTrois.setVisibility(View.GONE);
                 boutonReponseQuatre.setVisibility(View.GONE);
+                boutonSaveName.setVisibility(View.VISIBLE);
+                boutonHome.setVisibility(View.VISIBLE);
+                txtInputName.setVisibility(View.VISIBLE);
             } else {
                 setup();
             }
