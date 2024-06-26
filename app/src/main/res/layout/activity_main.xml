@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3AAAFE"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -12,21 +13,70 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/btn_game"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jouer" />
 
-        <Button
-            android:id="@+id/btn_highscore"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/text_titre"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Records" />
+            android:text="@string/titre"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="328dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/logo"
+            android:contentDescription="@string/logo_desc" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_game"
+                    android:layout_width="140dp"
+                    android:layout_height="100dp"
+                    android:backgroundTint="#81EF36"
+                    android:textColor="@android:color/black"
+                    android:text="@string/bouton_jouer"
+                    android:textSize="18sp"
+                    app:cornerRadius="16dp" />
+
+                <Space
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_highscore"
+                    android:layout_width="140dp"
+                    android:layout_height="100dp"
+                    android:backgroundTint="#81EF36"
+                    android:text="@string/bouton_score"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    app:cornerRadius="16dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
