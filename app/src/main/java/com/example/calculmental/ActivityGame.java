@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.Random;
@@ -22,7 +23,10 @@ public class ActivityGame extends AppCompatActivity {
     private TextView txtCalcul;
     private TextView txtQuestion;
     private int score = 0;
+    private int life = 3;
     private int questionNumber = 1;
+    private MenuItem txt_lives;
+    private MenuItem txt_score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +90,8 @@ public class ActivityGame extends AppCompatActivity {
         boutonReponseDeux.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseDeux, answer));
         boutonReponseTrois.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseTrois, answer));
         boutonReponseQuatre.setOnClickListener(view -> appuyerBoutonReponse(boutonReponseQuatre, answer));
+
+
     }
     private void appuyerBoutonReponse(Button bouton, double answer) {
         if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(answer))) {
@@ -96,8 +102,19 @@ public class ActivityGame extends AppCompatActivity {
         } else {
             txtQuestion.setText("Mauvaise réponse !");
             questionNumber++;
-            setup();
+            life--;
+            if (life == 0) {
+                txtQuestion.setText("Game Over !");
+                txtCalcul.setText("Score : " + score);
+                boutonReponseUn.setVisibility(View.GONE);
+                boutonReponseDeux.setVisibility(View.GONE);
+                boutonReponseTrois.setVisibility(View.GONE);
+                boutonReponseQuatre.setVisibility(View.GONE);
+            } else {
+                setup();
+            }
         }
+        updateMenuItems();
     }
 
     private boolean isCorrectAnswer(String string, String answer) {
@@ -148,5 +165,25 @@ public class ActivityGame extends AppCompatActivity {
         while (answer == fakeAnswer)
             fakeAnswer = random.nextInt((max - min) + 1) + min;
         return fakeAnswer;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menugame, menu);
+
+        txt_lives = menu.findItem(R.id.txt_lives);
+        txt_score = menu.findItem(R.id.txt_score);
+
+        updateMenuItems();
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void updateMenuItems() {
+        if (txt_lives != null && txt_score != null) {
+            txt_lives.setTitle("Vies : " + life);
+            txt_score.setTitle("Score : " + score);
+        }
     }
 }
