@@ -145,7 +145,7 @@ public class ActivityGame extends AppCompatActivity {
 
     private void appuyerBoutonReponse(Button bouton, double answer) {
         if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(String.format(Locale.getDefault(), "%.2f", answer)))) {
-            if (correctSoundPlayer != null) {
+            if (correctSoundPlayer != null && MediaPlayerManager.mediaPlayer.isPlaying()) {
                 correctSoundPlayer.start();
             }
 
@@ -163,7 +163,7 @@ public class ActivityGame extends AppCompatActivity {
             questionNumber++;
             setup();
         } else {
-            if (incorrectSoundPlayer != null) {
+            if (incorrectSoundPlayer != null && MediaPlayerManager.mediaPlayer.isPlaying()) {
                 incorrectSoundPlayer.start();
             }
 
