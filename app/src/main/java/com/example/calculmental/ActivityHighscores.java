@@ -1,6 +1,8 @@
 package com.example.calculmental;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -18,6 +20,7 @@ import java.util.List;
 public class ActivityHighscores extends AppCompatActivity {
     private ScoreDao scoreDao;
     private ListView listView;
+    private Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class ActivityHighscores extends AppCompatActivity {
             return insets;
         });
 
+        btnHome = findViewById(R.id.btn_home);
         listView = findViewById(R.id.list_high_scores); // Récupérez la référence à la ListView
         scoreDao = new ScoreDao(new ScoreBaseHelper(this,"score.db",1));
         long nombreScores = scoreDao.count();
@@ -40,6 +44,11 @@ public class ActivityHighscores extends AppCompatActivity {
             HighscoreAdapter adapter = new HighscoreAdapter(this, topScores);
             listView.setAdapter(adapter);
         }
+
+        btnHome.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 }
 
