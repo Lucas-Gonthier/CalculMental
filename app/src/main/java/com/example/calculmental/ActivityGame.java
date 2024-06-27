@@ -38,6 +38,9 @@ public class ActivityGame extends AppCompatActivity {
     private MenuItem txt_score;
     private MediaPlayer mediaPlayer;
 
+    private MediaPlayer correctSoundPlayer;
+    private MediaPlayer incorrectSoundPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,9 @@ public class ActivityGame extends AppCompatActivity {
         });
         boutonSaveName = findViewById(R.id.btn_save);
         boutonHome = findViewById(R.id.btn_home);
+
+        correctSoundPlayer = MediaPlayer.create(this, R.raw.correct);
+        incorrectSoundPlayer = MediaPlayer.create(this, R.raw.incorrect);
 
         boutonSaveName.setVisibility(View.GONE);
         boutonHome.setVisibility(View.GONE);
@@ -140,12 +146,30 @@ public class ActivityGame extends AppCompatActivity {
 
     private void appuyerBoutonReponse(Button bouton, double answer) {
         if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(String.format(Locale.getDefault(), "%.2f", answer)))) {
+            if (correctSoundPlayer != null) {
+                correctSoundPlayer.start();
+            }
+
             showCustomToast(getString(R.string.toast_bonne));
+            findViewById(R.id.layout_error).setBackgroundResource(R.drawable.border_green);
+            findViewById(R.id.layout_error).setVisibility(View.VISIBLE);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    findViewById(R.id.layout_error).setVisibility(View.INVISIBLE);
+                }
+            }, 750);
             score++;
             questionNumber++;
             setup();
         } else {
+            if (incorrectSoundPlayer != null) {
+                incorrectSoundPlayer.start();
+            }
+
             showCustomToast(getString(R.string.toast_mauvais));
+            findViewById(R.id.layout_error).setBackgroundResource(R.drawable.border_red);
             findViewById(R.id.layout_error).setVisibility(View.VISIBLE);
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
