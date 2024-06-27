@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        boutonJouer = findViewById(R.id.btn_game);
+        boutonJouer = findViewById(R.id.btn_understood);
         boutonJouer.setOnClickListener(view -> {
-            Intent intent = new Intent(this, ActivityGame.class);
+            Intent intent = new Intent(this, ActivityRules.class);
             startActivity(intent);
         });
         boutonRecords = findViewById(R.id.btn_highscore);
