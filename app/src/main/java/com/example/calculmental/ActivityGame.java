@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Random;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -126,12 +128,12 @@ public class ActivityGame extends AppCompatActivity {
     }
     private void appuyerBoutonReponse(Button bouton, double answer) {
         if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(String.format(Locale.getDefault(), "%.2f",answer)))) {
-            txtQuestion.setText("Bonne réponse !");
+            Toast.makeText(this, "réussite", Toast.LENGTH_SHORT).show();
             score++;
             questionNumber++;
             setup();
         } else {
-            txtQuestion.setText("Mauvaise réponse !");
+            Toast.makeText(this, "échec", Toast.LENGTH_SHORT).show();
             questionNumber++;
             life--;
             if (life == 0) {
