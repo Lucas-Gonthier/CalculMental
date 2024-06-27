@@ -34,5 +34,4 @@
             android:name=".ActivityCredits"
             android:exported="false"/>
     </application>
-
 </manifest>
