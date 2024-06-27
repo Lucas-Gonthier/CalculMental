@@ -36,7 +36,7 @@ public class ActivityGame extends AppCompatActivity {
     private int questionNumber = 1;
     private MenuItem txt_lives;
     private MenuItem txt_score;
-    private MediaPlayer mediaPlayer;
+    private MenuItem btn_son;
 
     private MediaPlayer correctSoundPlayer;
     private MediaPlayer incorrectSoundPlayer;
@@ -251,10 +251,10 @@ public class ActivityGame extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menugame, menu);
 
-        MenuItem btn_son = menu.findItem(R.id.btn_son);
-        btn_son.setVisible(false);
+
         txt_lives = menu.findItem(R.id.txt_lives);
         txt_score = menu.findItem(R.id.txt_score);
+        btn_son = menu.findItem(R.id.btn_son);
 
         updateMenuItems();
 
@@ -263,8 +263,24 @@ public class ActivityGame extends AppCompatActivity {
 
     private void updateMenuItems() {
         if (txt_lives != null && txt_score != null) {
-            txt_lives.setTitle("Vies : " + life);
+            txt_lives.setTitle(life + " ❤\uFE0F");
             txt_score.setTitle("Score : " + score);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        if (item.getItemId() == R.id.btn_son) {
+            if (MediaPlayerManager.mediaPlayer.isPlaying()) {
+                MediaPlayerManager.mediaPlayer.pause();
+                item.setIcon(R.drawable.musicoff);
+            } else {
+                MediaPlayerManager.mediaPlayer.start();
+                item.setIcon(R.drawable.musicon);
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

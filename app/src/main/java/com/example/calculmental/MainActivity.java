@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private Button boutonJouer;
     private Button boutonRecords;
     private Button boutonCredits;
-    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ActivityCredits.class);
             startActivity(intent);
         });
-        mediaPlayer = MediaPlayer.create(this, R.raw.aliensong);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+        MediaPlayerManager.mediaPlayer.start();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         if (item.getItemId() == R.id.btn_son) {
-            if (mediaPlayer.isPlaying()) {
-                mediaPlayer.pause();
+            if (MediaPlayerManager.mediaPlayer.isPlaying()) {
+                MediaPlayerManager.mediaPlayer.pause();
                 item.setIcon(R.drawable.musicoff);
             } else {
-                mediaPlayer.start();
+                MediaPlayerManager.mediaPlayer.start();
                 item.setIcon(R.drawable.musicon);
             }
             return true;
@@ -72,10 +69,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
+        if (MediaPlayerManager.mediaPlayer != null) {
+            if (MediaPlayerManager.mediaPlayer.isPlaying()) {
+                MediaPlayerManager.mediaPlayer.stop();
+            }
+            MediaPlayerManager.mediaPlayer.release();
+            MediaPlayerManager.mediaPlayer = null;
         }
     }
 }
