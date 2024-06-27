@@ -27,6 +27,9 @@
         <activity
             android:name=".ActivityHighscores"
             android:exported="false"/>
+        <activity
+            android:name=".ActivitySaveScore"
+            android:exported="false"/>
     </application>
 
 </manifest>
