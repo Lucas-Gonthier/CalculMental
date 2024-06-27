@@ -102,6 +102,10 @@
             android:gravity="start"
             android:orientation="vertical">
 
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:id="@+id/premiereligne"
                 android:layout_width="wrap_content"
@@ -109,9 +113,14 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
                 <Button
                     android:id="@+id/btn_reponse1"
-                    android:layout_width="192dp"
+                    android:layout_width="160dp"
                     android:layout_height="120dp"
                     android:backgroundTint="#81EF36"
                     android:text="Button"
@@ -125,13 +134,18 @@
 
                 <Button
                     android:id="@+id/btn_reponse2"
-                    android:layout_width="192dp"
+                    android:layout_width="160dp"
                     android:layout_height="120dp"
                     android:backgroundTint="#81EF36"
                     android:text="Button"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     app:cornerRadius="16dp" />
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <Space
@@ -145,9 +159,14 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
                 <Button
                     android:id="@+id/btn_reponse3"
-                    android:layout_width="192dp"
+                    android:layout_width="160dp"
                     android:layout_height="120dp"
                     android:backgroundTint="#81EF36"
                     android:text="Button"
@@ -161,13 +180,18 @@
 
                 <Button
                     android:id="@+id/btn_reponse4"
-                    android:layout_width="192dp"
+                    android:layout_width="160dp"
                     android:layout_height="120dp"
                     android:backgroundTint="#81EF36"
                     android:text="Button"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     app:cornerRadius="16dp" />
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
