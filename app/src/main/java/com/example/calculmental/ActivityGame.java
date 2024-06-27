@@ -2,6 +2,7 @@ package com.example.calculmental;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -126,14 +127,29 @@ public class ActivityGame extends AppCompatActivity {
 
 
     }
+    private void showCustomToast(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.toast_root));
+
+
+        TextView textView = layout.findViewById(R.id.toast_text);
+        textView.setText(message);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+    }
+
+
     private void appuyerBoutonReponse(Button bouton, double answer) {
-        if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(String.format(Locale.getDefault(), "%.2f",answer)))) {
-            Toast.makeText(this, "réussite", Toast.LENGTH_SHORT).show();
+        if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(String.format(Locale.getDefault(), "%.2f", answer)))) {
+            showCustomToast(getString(R.string.toast_bonne));
             score++;
             questionNumber++;
             setup();
         } else {
-            Toast.makeText(this, "échec", Toast.LENGTH_SHORT).show();
+            showCustomToast(getString(R.string.toast_mauvais));
             questionNumber++;
             life--;
             if (life == 0) {
@@ -152,6 +168,7 @@ public class ActivityGame extends AppCompatActivity {
         }
         updateMenuItems();
     }
+
 
     private boolean isCorrectAnswer(String string, String answer) {
         return string.equals(answer);
