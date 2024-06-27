@@ -40,6 +40,7 @@ public class ActivityGame extends AppCompatActivity {
     private int questionNumber = 1;
     private MenuItem txt_lives;
     private MenuItem txt_score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +126,7 @@ public class ActivityGame extends AppCompatActivity {
 
 
     }
+
     private void showCustomToast(String message) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.toast_root));
@@ -138,7 +140,6 @@ public class ActivityGame extends AppCompatActivity {
         toast.setView(layout);
         toast.show();
     }
-
 
     private void appuyerBoutonReponse(Button bouton, double answer) {
         if (isCorrectAnswer(bouton.getText().toString(), String.valueOf(String.format(Locale.getDefault(), "%.2f", answer)))) {
@@ -174,7 +175,6 @@ public class ActivityGame extends AppCompatActivity {
         }
         updateMenuItems();
     }
-
 
     private boolean isCorrectAnswer(String string, String answer) {
         return string.equals(answer);
