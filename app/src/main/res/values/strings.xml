@@ -17,4 +17,10 @@
     <string name="title_credits">Cette application a été développée par</string>
     <string name="text_credits">Hallot Florent - Walter Malcolm - Gonthier Lucas</string>
     <string name="text_group">Groupe 1</string>
+
+    <string name="title_rules">Vous avez été kidnappé par des Aliens !</string>
+    <string name="text_rules">Pour espérer survivre, vous devez passer leurs tests. Répondez à ces calculs mathématiques mais attention, vous n\'avez le droit qu\'à 2 erreurs, la 3eme vous serait fatale.</string>
+    <string name="text_gl">Bonne chance !</string>
+    <string name="btn_understood">Compris !</string>
+
 </resources>

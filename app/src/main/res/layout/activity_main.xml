@@ -46,7 +46,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_game"
+                android:id="@+id/btn_understood"
                 android:layout_width="140dp"
                 android:layout_height="100dp"
                 android:backgroundTint="#81EF36"

@@ -33,5 +33,8 @@
         <activity
             android:name=".ActivityCredits"
             android:exported="false"/>
+        <activity
+            android:name=".ActivityRules"
+            android:exported="false"/>
     </application>
 </manifest>
