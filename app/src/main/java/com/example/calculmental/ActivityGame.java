@@ -35,7 +35,6 @@ public class ActivityGame extends AppCompatActivity {
     private TextView txtQuestion;
     private Button boutonSaveName;
     private Button boutonHome;
-    private TextInputEditText txtInputName;
     private int score = 0;
     private int life = 3;
     private int questionNumber = 1;
@@ -54,18 +53,16 @@ public class ActivityGame extends AppCompatActivity {
         });
         boutonSaveName = findViewById(R.id.btn_nameSave);
         boutonHome = findViewById(R.id.btn_home);
-        txtInputName = findViewById(R.id.txtinput_name);
 
         boutonSaveName.setVisibility(View.GONE);
         boutonHome.setVisibility(View.GONE);
-        txtInputName.setVisibility(View.GONE);
 
         boutonSaveName.setOnClickListener(view -> {
-            Score score = new Score();
-            score.setUserName(txtInputName.getText().toString());
-            score.setScore(this.score);
-            ScoreDao scoreDao = new ScoreDao(new ScoreBaseHelper(this, "score.db", 1));
-            scoreDao.create(score);
+
+
+            Intent intent = new Intent(this, ActivitySaveScore.class);
+            intent.putExtra("player_score", score); // 'score' est la variable qui contient le score du joueur
+            startActivity(intent);
         });
 
         boutonHome.setOnClickListener(view -> {
@@ -160,9 +157,6 @@ public class ActivityGame extends AppCompatActivity {
                 }
             }, 750);
 
-
-
-
             questionNumber++;
             life--;
             if (life == 0) {
@@ -174,7 +168,6 @@ public class ActivityGame extends AppCompatActivity {
                 boutonReponseQuatre.setVisibility(View.GONE);
                 boutonSaveName.setVisibility(View.VISIBLE);
                 boutonHome.setVisibility(View.VISIBLE);
-                txtInputName.setVisibility(View.VISIBLE);
             } else {
                 setup();
             }
