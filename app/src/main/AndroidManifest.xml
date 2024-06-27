@@ -31,5 +31,4 @@
             android:name=".ActivitySaveScore"
             android:exported="false"/>
     </application>
-
 </manifest>

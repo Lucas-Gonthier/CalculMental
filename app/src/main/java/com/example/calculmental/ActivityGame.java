@@ -19,6 +19,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.Locale;
+import android.media.MediaPlayer;
 
 import com.example.calculmental.entities.Score;
 import com.example.calculmental.database.ScoreBaseHelper;
@@ -40,6 +41,7 @@ public class ActivityGame extends AppCompatActivity {
     private int questionNumber = 1;
     private MenuItem txt_lives;
     private MenuItem txt_score;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,6 +233,8 @@ public class ActivityGame extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menugame, menu);
 
+        MenuItem btn_son = menu.findItem(R.id.btn_son);
+        btn_son.setVisible(false);
         txt_lives = menu.findItem(R.id.txt_lives);
         txt_score = menu.findItem(R.id.txt_score);
 
