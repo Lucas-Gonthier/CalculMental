@@ -9,14 +9,19 @@
     android:background="#3AAAFE">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_red"
+        android:visibility="invisible">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/EcranLayout"
@@ -133,7 +138,7 @@
                     android:text="Button"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    app:cornerRadius="16dp"/>
+                    app:cornerRadius="16dp" />
             </LinearLayout>
 
             <Space
@@ -155,7 +160,7 @@
                     android:text="Button"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    app:cornerRadius="16dp"/>
+                    app:cornerRadius="16dp" />
 
                 <Space
                     android:layout_width="32dp"
@@ -169,8 +174,9 @@
                     android:text="Button"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    app:cornerRadius="16dp"/>
+                    app:cornerRadius="16dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

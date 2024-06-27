@@ -2,6 +2,7 @@ package com.example.calculmental;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -150,6 +151,18 @@ public class ActivityGame extends AppCompatActivity {
             setup();
         } else {
             showCustomToast(getString(R.string.toast_mauvais));
+            findViewById(R.id.layout_error).setVisibility(View.VISIBLE);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    findViewById(R.id.layout_error).setVisibility(View.INVISIBLE);
+                }
+            }, 750);
+
+
+
+
             questionNumber++;
             life--;
             if (life == 0) {
