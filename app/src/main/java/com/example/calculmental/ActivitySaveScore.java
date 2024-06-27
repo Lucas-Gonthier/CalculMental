@@ -19,7 +19,7 @@ public class ActivitySaveScore extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_save_score);
+        setContentView(R.layout.activity_save_score);
 
         Intent intent = getIntent();
         int playerScore = intent.getIntExtra("player_score", 0); // '0' est la valeur par défaut si "player_score" n'existe pas

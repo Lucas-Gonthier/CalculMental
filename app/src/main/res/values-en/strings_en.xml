@@ -4,6 +4,7 @@
     <string name="titre">Alien Calculation: Isolation</string>
     <string name="bouton_jouer">Play !</string>
     <string name="bouton_score">Highscore</string>
+    <string name="bouton_credits">Credits</string>
     <string name="logo_desc">Logo image (an alien in his spaceship)</string>
     <string name="toast_bonne">Good Answer !</string>
     <string name="toast_mauvais">Wrong Answer !</string>
@@ -13,4 +14,8 @@
     <string name="username_input">Enter a username</string>
     <string name="username_error">Enter a valid username</string>
     <string name="btn_save_score">Save your score</string>
+
+    <string name="title_credits">This application was developed by</string>
+    <string name="text_credits">Hallot Florent - Walter Malcolm - Gonthier Lucas</string>
+    <string name="text_group">Group 1</string>
 </resources>

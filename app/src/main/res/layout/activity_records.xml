@@ -26,7 +26,9 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/bouton_score"
-                android:textSize="44sp" />
+                android:textColor="@color/black"
+                android:textSize="44sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_home"

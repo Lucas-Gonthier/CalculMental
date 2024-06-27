@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/text_score"
-            android:textSize="37sp" />
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edit_name"
