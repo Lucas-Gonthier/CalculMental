@@ -21,11 +21,6 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Locale;
 import android.media.MediaPlayer;
 
-import com.example.calculmental.entities.Score;
-import com.example.calculmental.database.ScoreBaseHelper;
-import com.example.calculmental.database.ScoreDao;
-import com.google.android.material.textfield.TextInputEditText;
-
 public class ActivityGame extends AppCompatActivity {
     private static final String[] OPERATORS = {"+", "-", "*", "/"};
     private Button boutonReponseUn;
@@ -54,7 +49,7 @@ public class ActivityGame extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        boutonSaveName = findViewById(R.id.btn_nameSave);
+        boutonSaveName = findViewById(R.id.btn_save);
         boutonHome = findViewById(R.id.btn_home);
 
         boutonSaveName.setVisibility(View.GONE);

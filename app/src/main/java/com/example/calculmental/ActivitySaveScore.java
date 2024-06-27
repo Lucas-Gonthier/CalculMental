@@ -28,14 +28,18 @@ public class ActivitySaveScore extends AppCompatActivity {
         editName = findViewById(R.id.edit_name);
 
         btnSaveScore.setOnClickListener(view -> {
-            Score score = new Score();
-            score.setUserName(editName.getText().toString());
-            score.setScore(playerScore);
-            ScoreDao scoreDao = new ScoreDao(new ScoreBaseHelper(this, "score.db", 1));
-            scoreDao.create(score);
+            if(!editName.getText().toString().isEmpty()) {
+                Score score = new Score();
+                score.setUserName(editName.getText().toString());
+                score.setScore(playerScore);
+                ScoreDao scoreDao = new ScoreDao(new ScoreBaseHelper(this, "score.db", 1));
+                scoreDao.create(score);
 
-            Intent intentHighscores = new Intent(this, ActivityHighscores.class);
-            startActivity(intentHighscores);
+                Intent intentHighscores = new Intent(this, ActivityHighscores.class);
+                startActivity(intentHighscores);
+            } else {
+                editName.setError(getString(R.string.username_error));
+            }
         });
 
     }

@@ -67,7 +67,7 @@
                     android:layout_height="match_parent"/>
 
                 <LinearLayout
-                    android:id="@+id/btnligne"
+                    android:id="@+id/btncolonne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -82,7 +82,7 @@
                         android:textColor="@android:color/black" />
 
                     <Button
-                        android:id="@+id/btn_nameSave"
+                        android:id="@+id/btn_save"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#81EF36"
