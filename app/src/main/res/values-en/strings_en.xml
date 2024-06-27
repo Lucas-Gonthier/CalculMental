@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MentalCalculation</string>
+    <string name="titre">Alien Calculation: Isolation</string>
+    <string name="bouton_jouer">Play !</string>
+    <string name="bouton_score">High Score</string>
+    <string name="logo_desc">Logo image (an alien in his spaceship)</string>
+    <string name="toast_bonne">Good Answer !</string>
+    <string name="toast_mauvais">Wrong Answer !</string>
+
+    <string name="accueil">Home</string>
+    <string name="text_score">Save your score</string>
+    <string name="username_input">Enter a username</string>
+    <string name="username_error">Enter a valid username</string>
+    <string name="btn_save_score">Save your score</string>
+</resources>
