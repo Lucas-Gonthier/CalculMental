@@ -58,7 +58,7 @@
 
         <Button
             android:id="@+id/btn_understood"
-            android:layout_width="140dp"
+            android:layout_width="160dp"
             android:layout_height="100dp"
             android:backgroundTint="#81EF36"
             android:text="@string/btn_understood"

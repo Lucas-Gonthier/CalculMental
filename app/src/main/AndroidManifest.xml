@@ -32,9 +32,11 @@
             android:exported="false"/>
         <activity
             android:name=".ActivityCredits"
-            android:exported="false"/>
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".ActivityRules"
-            android:exported="false"/>
+            android:exported="false"
+            android:noHistory="true"/>
     </application>
 </manifest>

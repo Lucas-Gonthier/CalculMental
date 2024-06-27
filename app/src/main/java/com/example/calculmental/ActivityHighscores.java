@@ -33,7 +33,6 @@ public class ActivityHighscores extends AppCompatActivity {
             return insets;
         });
 
-        btnHome = findViewById(R.id.btn_home);
         listView = findViewById(R.id.list_high_scores); // Récupérez la référence à la ListView
         scoreDao = new ScoreDao(new ScoreBaseHelper(this,"score.db",1));
         long nombreScores = scoreDao.count();
@@ -45,9 +44,9 @@ public class ActivityHighscores extends AppCompatActivity {
             listView.setAdapter(adapter);
         }
 
+        btnHome = findViewById(R.id.btn_home);
         btnHome.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            finish();
         });
     }
 }

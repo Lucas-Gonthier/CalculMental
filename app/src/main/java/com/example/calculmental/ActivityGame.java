@@ -70,8 +70,7 @@ public class ActivityGame extends AppCompatActivity {
         });
 
         boutonHome.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            finish();
         });
 
         setup();
